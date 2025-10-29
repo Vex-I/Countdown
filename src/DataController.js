@@ -1,12 +1,13 @@
 class DataController {
-    constructor() {}
     
     static activityListToJSON(list){
-        const item = JSON.stringify(this.activityList.map(act => ({
-            name: act.getName(),
-            timeSpent: act.getTimeSpent()
-        })));
-        localStorage.setItem("activities", item);
+        const item = list.map(act => ({
+            name: act.name,
+            time: act.time,
+            isTracking: act.isTracking,
+            startTime: 0
+        }));
+        localStorage.setItem("activities", JSON.stringify(item));
     }
 
     static cacheData(targetDate, usingHoursFormat, theme) {

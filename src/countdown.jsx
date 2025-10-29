@@ -39,9 +39,9 @@ const Countdown = ({targetDate, usingHoursFormat, setCountdownArgs, setIsOpening
     }
   }
 
-  // Triggers time update every second.
+  // Triggers time update whenever 
   useEffect(() => {
-    calculateTimeLeft(); //Updates time left
+    calculateTimeLeft(); 
     const timer = setInterval(() => {
         calculateTimeLeft();
         setIsNew(true);
