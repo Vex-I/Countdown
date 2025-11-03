@@ -4,7 +4,12 @@
   "version": "1.0",
   "description": "A simple time tracking extension made with React",
   "action": {
-    "default_popup": "index.html"
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "static/media/DownCount16.png",
+      "48": "static/media/DownCount48.png",
+      "128": "static/media/DownCount128.png"
+    }
   },
   "permissions": ["storage", "activeTab", "scripting"],
   "host_permissions": ["<all_urls>"],

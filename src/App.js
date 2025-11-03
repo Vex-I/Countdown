@@ -22,9 +22,10 @@ function App() {
     usingHoursFormat: DataController.retrieveCacheData?.hoursFormat ?? true
   })
 
-  let lastDate = new Date().toDateString();
+  
 
   function checkDayChange() {
+    let lastDate = new Date().toDateString();
     const today = new Date().toDateString();
     if (today !== lastDate) {
       setTracking({dateTracked: today, timeTracked: 0})
@@ -45,7 +46,7 @@ function App() {
       dateTracked: prev.dateTracked,
       timeTracked: prev.timeTracked + track
     };
-
+    console.log(newTrack)
     DataController.cacheData(countdownArgs.targetDate, countdownArgs.usingHoursFormat, theme, newTrack)
     return newTrack;
     })

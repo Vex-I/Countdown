@@ -30,7 +30,6 @@ const ActivityAggregate = ({ isOpen, setIsOpen, setTracking}) => {
   function trackAct(data) {
     if (!data.isTracking) {
         setList(prev => {
-            console.log(prev)
             return prev.map(act => 
                 act.name === data.name
                 ? { ...act, isTracking: true, startTime: Date.now() - act.time}
@@ -59,16 +58,19 @@ const ActivityAggregate = ({ isOpen, setIsOpen, setTracking}) => {
             }
               return act;
             });
-          DataController.activityListToJSON(updatedList);
-          return updatedList;
-        });
 
-        if (latestTracking !== null) {
-        setTracking(latestTracking);
-      }
+              DataController.activityListToJSON(updatedList);
+              console.log(latestTracking)
+              if (latestTracking !== null) {
+                setTracking(latestTracking);
+              }
+
+              return updatedList;
+        });
+        
     }, 50);
     return () => clearInterval(timer);
-  }, []);
+    }, []);
 
   
 
