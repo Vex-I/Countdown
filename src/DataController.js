@@ -1,3 +1,5 @@
+import ActivityAggregate from "./ActivityAggregate";
+
 class DataController {
     
     static activityListToJSON(list){
@@ -5,16 +7,17 @@ class DataController {
             name: act.name,
             time: act.time,
             isTracking: act.isTracking,
-            startTime: 0
+            startTime: act.startTime,
         }));
         localStorage.setItem("activities", JSON.stringify(item));
     }
 
-    static cacheData(targetDate, usingHoursFormat, theme) {
+    static cacheData(targetDate, usingHoursFormat, theme, tracking) {
         const item = {
             date: targetDate,
             hoursFormat: usingHoursFormat,
-            currTheme: theme
+            currTheme: theme,
+            tracking: tracking
         };
         localStorage.setItem("cache", JSON.stringify(item));
     }

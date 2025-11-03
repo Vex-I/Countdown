@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Calendar from 'react-calendar';
+import Wave from "react-wavify"
+
+const MS_IN_HOUR = 360000;
 
 const Countdown = ({targetDate, usingHoursFormat, setCountdownArgs, setIsOpeningAct}) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -57,29 +60,31 @@ const Countdown = ({targetDate, usingHoursFormat, setCountdownArgs, setIsOpening
     });
   };
 
+  
+
   return (
     <div className="countdown">
-      <h1 style={{fontSize:"4rem"}}>Countdown to {targetDate.toDateString()} </h1>
-      <div className={`slide ${isNew ? "new" : ""}`} style={{fontSize:"2rem"}}>
+      <h1 style={{fontSize:"2rem", zIndex:"1"}}>Countdown to {targetDate.toDateString()} </h1>
+      <div className={`slide ${isNew ? "new" : ""}`} style={{fontSize:"1rem", zIndex:"1"}}>
         <h3 style={{visibility: usingHoursFormat ? "hidden" : "", color: "var(--color-primary)"}}>
             {timeLeft.days} Days
         </h3>
-        <h2>{timeLeft.hours} Hours {timeLeft.minutes} Minutes {timeLeft.seconds} Seconds</h2>
+        <h2 style={{fontSize:"2rem"}}>{timeLeft.hours} Hours {timeLeft.minutes} Minutes {timeLeft.seconds} Seconds</h2>
       </div>
-      <div className="button-container">
+      <div className="button-container" style={{zIndex:"1"}}>
         <button className="ui-button" onClick={toggleFormat}>
-          Switch to {usingHoursFormat ? "Days/Hours" : "Total Hours"}
+          To {usingHoursFormat ? "Days/Hours" : "Total Hours"}
         </button>
         <div style={{position: "relative"}}>
-          <button className="ui-button" style={{width: "100%"}} onClick={() => setIsOpenCalendar(x => !x)}>
-            Edit Date
+          <button className="ui-button" style={{width: "100%", height:"100%"}} onClick={() => setIsOpenCalendar(x => !x)}>
+            Date
           </button>
           <div className="input-calendar" style={{display: isOpenCalendar ? "inline" : "none"}}>
             <Calendar onChange={(value, event) => setCountdownArgs({targetDate: value, usingHoursFormat: usingHoursFormat})}/>
           </div>
         </div>
         <button className="ui-button" onClick={() => setIsOpeningAct(x => !x)}>
-            Record Activity
+            Activity
         </button>
       </div>
     </div>

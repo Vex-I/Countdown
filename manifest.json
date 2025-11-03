@@ -1,10 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "Downcount",
+  "name": "My React Extension",
   "version": "1.0",
-  "description": "A simple time tracking extension made with React",
+  "description": "React app as a Chrome extension",
   "action": {
-    "default_popup": "index.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
   },
   "permissions": ["storage", "activeTab", "scripting"],
   "host_permissions": ["<all_urls>"],

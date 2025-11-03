@@ -14,14 +14,21 @@ const Activity = ({onTrackAct, data}) => {
     const formattedTime = formatTime(data.time).map(x => String(x).padStart(2, "0"));
     return(
         <div className="activity-element">
-            <div style={{alignContent:"center"}}>
-                <p style={{textAlign: "center"}}>{data.name}</p>
+            <div style={{paddingLeft:"1em"}}>
+                <p style={{fontWeight:"bold"}}>{data.name}</p>
             </div>
             <div style={{alignContent:"center"}}>
-                <p style={{textAlign: "center"}}> {formattedTime[0]}:{formattedTime[1]}:{formattedTime[2]}:{formattedTime[3]} </p>
+                <p style={{textAlign: "center", color:"hsl(from var(--color-text) H S L / 70%)"}}> {formattedTime[0]}:{formattedTime[1]}:{formattedTime[2]}:{formattedTime[3]} </p>
             </div>
             <div style={{alignContent:"center"}}>
-                <button onClick={() => onTrackAct(data)}>Track</button>
+                <button 
+                className="ui-button" 
+                style={{
+                    margin:"0px",
+                    padding:"0.5em",
+                    fontSize:"12px"
+                }}  
+                onClick={() => onTrackAct(data)}>Track</button>
             </div>
         </div>
     )
