@@ -8,7 +8,7 @@ import react, { useEffect } from 'react';
 import Wave from "react-wavify";
 
 
-const MS_IN_HOUR = 360000;
+const MS_IN_HOUR = 3600000;
 function App() {
   const [isOpeningAct, setIsOpeningAct] = react.useState(false);
   const [theme, setTheme] = react.useState(DataController.retrieveCacheData()?.currTheme ?? 'light');
@@ -69,7 +69,7 @@ function App() {
   }
 
   function calulateHeight(tracking) {
-    const height = 430 * (1 - (tracking / MS_IN_HOUR / 12));
+    const height = 430 * (1 - ((tracking / MS_IN_HOUR) / 12));
     return height
   }
 
