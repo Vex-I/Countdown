@@ -19,13 +19,13 @@ function App() {
 
   const [countdownArgs, setCountdownArgs] = react.useState({  
     targetDate: new Date(DataController.retrieveCacheData()?.date) ?? new Date(),
-    usingHoursFormat: DataController.retrieveCacheData?.hoursFormat ?? true
+    usingHoursFormat: DataController.retrieveCacheData()?.hoursFormat ?? true
   })
 
   
 
   function checkDayChange() {
-    let lastDate = new Date().toDateString();
+    let lastDate = tracking.dateTracked;
     const today = new Date().toDateString();
     if (today !== lastDate) {
       setTracking({dateTracked: today, timeTracked: 0})
@@ -90,7 +90,8 @@ function App() {
         width:"500px",
         height:"434px",
         borderRadius:"8px",
-        overflowX:"hidden"}}>
+        overflowX:"hidden",
+        background:"var(--color-background)"}}>
       <Wave 
       style={{
         position:"absolute",
